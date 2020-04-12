@@ -26,6 +26,12 @@ main {
     min-height: 100%;
 }
 
+#home-text {
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
 .tweet-section {
     flex-direction: column;
     height: 100%;
@@ -35,16 +41,21 @@ main {
     flex-shrink: 1;
 }
 
+.tweet-list-container {
+    flex-direction: column;
+}
+
 .sub-section {
     flex-direction: column;
     height: 100%;
     width: 350px;
 }
 
-.border {
-    border: 1px solid lightgrey;
+.tweet-input-container {
+    flex-direction: row;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-
 
 
 .tweet-input {
@@ -100,6 +111,11 @@ main {
     margin: 10px 0;
 }
 
+tweet-section > div {
+    border-bottom: 1px solid lightgrey;
+}
+
+
 app-tweet {
     flex-grow: 1;
 }
@@ -113,4 +129,8 @@ app-search-bar {
     background-color: rgb(230, 236, 240);
     border: 1px solid transparent;
     border-radius: 10px;
+}
+
+.border {
+    border: 1px solid lightgrey;
 }
