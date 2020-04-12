@@ -6,7 +6,6 @@ header {
 .side-bar {
   height: 100%;
   flex-basis: 275px;
-  background-color: lightblue;
 }
 
 .side-bar-content {
