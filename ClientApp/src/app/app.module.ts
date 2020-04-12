@@ -12,6 +12,7 @@ import { AvatorIconComponent } from './shared/avator-icon/avator-icon.component'
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchBarComponent } from './shared/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TweetComponent,
     AvatorIconComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

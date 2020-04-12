@@ -1,0 +1,21 @@
+.search-bar-box {
+    border: 1px solid transparent;
+    border-radius: 30px;
+    background-color: rgb(230, 236, 240);
+}
+
+.search-icon {
+    fill: rgb(101, 119, 134);
+    margin-right: 10px;
+    min-width: 16px;
+}
+
+.search-input {
+    width: 100%;
+    border-style: none;
+    padding: 5px 0;
+}
+
+.search-input {
+    outline: none;
+}
