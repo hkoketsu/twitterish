@@ -1,0 +1,20 @@
+.modal-header {
+    justify-content: flex-start;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.close {
+    color: rgb(29, 161, 242);
+    margin: -1rem auto -1rem -1rem ;
+}
+
+.close:focus {
+    outline: none;
+}
+
+app-tweet-input {
+    flex-grow: 1;
+}
