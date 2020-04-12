@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TodoApp": {
+    "twitterish": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "TodoApp:build"
+            "browserTarget": "twitterish:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "TodoApp:build:production"
+              "browserTarget": "twitterish:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TodoApp:build"
+            "browserTarget": "twitterish:build"
           }
         },
         "test": {
@@ -129,7 +129,7 @@
         }
       }
     },
-    "TodoApp-e2e": {
+    "twitterish-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -137,7 +137,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "TodoApp:serve"
+            "devServerTarget": "twitterish:serve"
           }
         },
         "lint": {
@@ -152,7 +152,7 @@
       }
     }
   },
-  "defaultProject": "TodoApp",
+  "defaultProject": "twitterish",
   "cli": {
     "analytics": "d219b19e-5895-44c6-83f2-7594b9748f4e"
   }
