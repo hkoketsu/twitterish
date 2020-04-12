@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TweetModalComponent } from '../shared/tweet-modal/tweet-modal.component';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -6,13 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-nav-menu.component.css']
 })
 export class SideNavMenuComponent {
-  isExpanded = false;
+  constructor(private modalService: NgbModal) {}
 
-  collapse() {
-    this.isExpanded = false;
-  }
-
-  toggle() {
-    this.isExpanded = !this.isExpanded;
+  openModal() {
+    const modalRef = this.modalService.open(TweetModalComponent);
+    modalRef.componentInstance.name = 'World';
   }
 }
+
