@@ -1,0 +1,50 @@
+main {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.avator-contaiener {
+    margin: 5px;
+}
+
+.tweet-input {
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    flex-basis: 0px;
+    align-items: stretch;
+    margin: 5px;
+    position: static;
+    width: 100%;
+}
+
+.tweet-text-editor {
+    width: 100%;
+    font-size: 19px;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.contenteditable {
+    display: block;
+    max-height: 38.0625em;
+    min-height: 1.3125em;
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    width: calc(100% - 70px);
+    color: black;
+}
+
+[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    cursor: text;
+    color: darkgrey;
+}
+
+.contenteditable:focus {
+    outline: 0px solid transparent;
+}
