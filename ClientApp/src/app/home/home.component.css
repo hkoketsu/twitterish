@@ -1,13 +1,51 @@
 main {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
+    align-items: stretch;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.main-contents {
+    flex-direction: column;
+    align-items: stretch;
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 990px;
+    min-height: 100%;
+}
+
+.section-container {
+    justify-content: space-between;
+    align-items: stretch;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 100%;
+}
+
+.tweet-section {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
     flex-grow: 1;
     flex-shrink: 1;
 }
 
-.avator-contaiener {
-    margin: 5px;
+.sub-section {
+    flex-direction: column;
+    height: 100%;
+    width: 350px;
 }
+
+.border {
+    border: 1px solid lightgrey;
+}
+
+
 
 .tweet-input {
     flex-direction: column;
@@ -15,9 +53,9 @@ main {
     flex-grow: 1;
     flex-basis: 0px;
     align-items: stretch;
-    margin: 5px;
+    padding: 5px;
     position: static;
-    width: 100%;
+    width: calc(100% - 100px);
 }
 
 .tweet-text-editor {
@@ -35,7 +73,7 @@ main {
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: pre-wrap;
-    width: calc(100% - 70px);
+    width: 100%;
     color: black;
 }
 
@@ -47,4 +85,14 @@ main {
 
 .contenteditable:focus {
     outline: 0px solid transparent;
+}
+
+.btn-tweet {
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 30px;
+}
+
+app-tweet {
+    flex-grow: 1;
 }
