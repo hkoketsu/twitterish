@@ -11,6 +11,7 @@ import { TweetComponent } from './shared/tweet/tweet.component';
 import { AvatorIconComponent } from './shared/avator-icon/avator-icon.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchBarComponent } from './shared/search-bar/search-bar.component';
+import { TweetInputComponent } from './shared/tweet-input/tweet-input.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SearchBarComponent } from './shared/search-bar/search-bar.component';
     HomeComponent,
     TweetComponent,
     AvatorIconComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    TweetInputComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
