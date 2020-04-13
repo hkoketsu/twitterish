@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Tweet } from '../shared/tweet/tweet.model';
+import { Tweet } from '../models/tweet.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,9 @@ export class TweetService {
     return this.http.get(this.apiUrl + id);
   }
 
-  createTweet(tweet: Tweet) {
-    return this.http.post(this.apiUrl, tweet);
+  createTweet(text: string) {
+    const newTweet = new Tweet();
+    newTweet.body = text;
+    return this.http.post(this.apiUrl, newTweet);
   }
 }
