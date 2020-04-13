@@ -30,14 +30,14 @@ code {
   display: flex;
   background-color: rgb(29, 161, 242);
   border: 1px solid rgb(29, 161, 242);
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 }
 
 .btn-tweet > div {
   font-weight: bold;
   color: white;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   flex-grow: 1;
 }

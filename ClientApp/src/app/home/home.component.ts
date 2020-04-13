@@ -21,4 +21,14 @@ export class HomeComponent implements OnInit {
       this.tweets = data;
     });
   }
+
+  postTweet(tweetText: string) {
+    console.log('post tweet');
+    this.tweetService.createTweet(tweetText)
+      .subscribe(res => {
+        console.log('submitted');
+        console.log(res);
+        this.loadTweets();
+      });
+  }
 }

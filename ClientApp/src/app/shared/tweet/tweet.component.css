@@ -36,3 +36,7 @@
     color: currentColor;
     fill: currentColor;
 }
+
+.angular-new-lines {
+  white-space: pre-wrap;
+}

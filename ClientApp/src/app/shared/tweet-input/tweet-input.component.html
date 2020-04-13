@@ -3,7 +3,10 @@
     <div class="tweet-input">
         <div class="align-items-center w-100">
             <div class="tweet-text-editor">
-                <div contenteditable="true" class="contenteditable" placeholder="What's happening?"></div>
+                <div contenteditable="true" class="contenteditable"
+                  placeholder="What's happening?"
+                  (blur)="onInputChange($event.target.innerText)"></div>
+                  <!-- (blur)="onInputChange($event.target.innerHtml)"></div> -->
             </div>
         </div>
         <div class="flex-row justify-content-between">
@@ -24,7 +27,7 @@
                 </div> -->
             </div>
 
-            <div class="ml-auto btn btn-tweet my-1 mr-3">
+            <div class="ml-auto btn btn-tweet my-1 mr-3" (click)="submit()">
                 <div>
                     Tweet
                 </div>

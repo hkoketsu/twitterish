@@ -25,7 +25,7 @@ namespace Twitterish.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tweet>>> GetTweets()
         {
-            return await _context.Tweets.ToListAsync();
+            return await _context.Tweets.OrderByDescending(t => t.ID).ToListAsync();
         }
 
         // GET: api/Tweet/5

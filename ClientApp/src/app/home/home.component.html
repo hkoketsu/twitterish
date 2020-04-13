@@ -1,20 +1,20 @@
 <main>
     <div class="main-contents">
         <div class="section-container">
-            <section class="tweet-section border">
+            <section class="tweet-section">
                 <div class="border-bottom">
                     <div id="home-text">
                         Home
                     </div>
                 </div>
                 <div class="tweet-input-container border-bottom">
-                    <app-tweet-input></app-tweet-input>
+                    <app-tweet-input (tweetSubject)="postTweet($event)"></app-tweet-input>
                 </div>
                 <div class="border-bottom py-1" style="background-color: rgb(230, 236, 240);">
                 </div>
                 <div class="tweet-list-container">
                   <div *ngFor="let tweet of tweets">
-                    <app-tweet [tweet]=tweet></app-tweet>
+                    <app-tweet [tweet]="tweet"></app-tweet>
                   </div>
                 </div>
             </section>
