@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchBarComponent } from './shared/search-bar/search-bar.component';
 import { TweetInputComponent } from './shared/tweet-input/tweet-input.component';
 import { TweetModalComponent } from './shared/tweet-modal/tweet-modal.component';
+import { TweetService } from './services/tweet.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { TweetModalComponent } from './shared/tweet-modal/tweet-modal.component'
       { path: '', component: HomeComponent, pathMatch: 'full' },
     ])
   ],
-  providers: [],
+  providers: [
+    TweetService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

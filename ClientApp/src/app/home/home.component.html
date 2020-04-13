@@ -13,15 +13,12 @@
                 <div class="border-bottom py-1" style="background-color: rgb(230, 236, 240);">
                 </div>
                 <div class="tweet-list-container">
-                    <app-tweet></app-tweet>
-                    <app-tweet></app-tweet>
-                    <app-tweet></app-tweet>
-                    <app-tweet></app-tweet>
-                    <app-tweet></app-tweet>
-
+                  <div *ngFor="let tweet of tweets">
+                    <app-tweet [tweet]=tweet></app-tweet>
+                  </div>
                 </div>
             </section>
-            
+
             <section class="sub-section">
                 <div class="search-bar-container">
                     <app-search-bar></app-search-bar>
