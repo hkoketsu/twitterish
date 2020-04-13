@@ -20,7 +20,6 @@ namespace Twitterish
             
             CreateDbIfNotExists(host);
 
-
             host.Run();
         }
 

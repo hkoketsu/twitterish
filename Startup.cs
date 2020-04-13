@@ -24,8 +24,8 @@ namespace Twitterish
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<TwitterishContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("SchoolContext")));
+            services.AddDbContext<TwitterishContext>(opt =>
+               opt.UseInMemoryDatabase("Twitterish"));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
