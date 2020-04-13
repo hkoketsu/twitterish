@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tweet } from '../models/tweet.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ import { Tweet } from '../models/tweet.model';
 export class TweetService {
   private apiUrl: string;
   tweets: Tweet[];
+  private loadSubject = new BehaviorSubject(false);
+  isLatest = this.loadSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -27,5 +30,9 @@ export class TweetService {
     const newTweet = new Tweet();
     newTweet.body = text;
     return this.http.post(this.apiUrl, newTweet);
+  }
+
+  isTimelineLatest(isLatest: boolean) {
+    this.loadSubject.next(isLatest);
   }
 }

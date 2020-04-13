@@ -3,7 +3,8 @@
 }
 
 .modal-body {
-    padding: 0;
+    padding: 5px 15px;
+    height: 250px;
 }
 
 .close {
@@ -16,5 +17,7 @@
 }
 
 app-tweet-input {
+    display: flex;
+    align-items: stretch;
     flex-grow: 1;
 }

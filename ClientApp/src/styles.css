@@ -58,3 +58,10 @@ app-home {
   flex-grow: 1;
   flex-shrink: 1;
 }
+
+.modal-content, app-tweet-modal {
+  width: 606px;
+  border-radius: 20px;
+}
+
+

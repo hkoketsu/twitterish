@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
-    flex-basis: 0px;
     align-items: stretch;
     padding: 5px;
     position: static;
@@ -11,7 +10,8 @@
 }
 
 .tweet-text-editor {
-    width: 520px;
+    max-width: 520px;
+    width: 100%;
     font-size: 19px;
     padding: 10px 0;
     align-items: center;

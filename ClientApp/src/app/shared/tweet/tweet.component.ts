@@ -12,7 +12,6 @@ export class TweetComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(`${this.tweet.id}: ${this.tweet.body}`);
   }
 
 }

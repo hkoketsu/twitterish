@@ -1,5 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TweetService } from 'src/app/services/tweet.service';
+import { Router } from '@angular/router';
+import { HomeComponent } from 'src/app/home/home.component';
 
 
 @Component({
@@ -8,7 +11,19 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./tweet-modal.component.css']
 })
 export class TweetModalComponent {
-  @Input() name: string;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    private tweetService: TweetService,
+    private router: Router) {}
+
+
+  postTweet(tweetText: string) {
+    this.tweetService.createTweet(tweetText)
+      .subscribe(res => {
+        this.activeModal.close();
+        this.router.navigate(['/']);
+        this.tweetService.isTimelineLatest(false);
+      });
+  }
 }

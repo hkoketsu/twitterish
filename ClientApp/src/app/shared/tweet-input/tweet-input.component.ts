@@ -18,14 +18,12 @@ export class TweetInputComponent implements OnInit {
   }
 
   onInputChange(value: string) {
-    console.log(value);
     // tslint:disable-next-line: whitespace
     this.tweetText = value;
     this.disabled = this.tweetText === '';
   }
 
   submit() {
-    console.log(`submit: ${this.tweetText}`);
     this.tweetSubject.emit(this.tweetText);
     this.tweetText = '';
   }
