@@ -14,8 +14,6 @@ import { SearchBarComponent } from './shared/search-bar/search-bar.component';
 import { TweetInputComponent } from './shared/tweet-input/tweet-input.component';
 import { TweetModalComponent } from './shared/tweet-modal/tweet-modal.component';
 import { TweetService } from './services/tweet.service';
-import { ApiAuthorizationModule } from './api-authorization/api-authorization.module';
-import { AuthorizeInterceptor } from './api-authorization/authorize.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,14 +32,12 @@ import { AuthorizeInterceptor } from './api-authorization/authorize.interceptor'
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
     ])
   ],
   providers: [
     TweetService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

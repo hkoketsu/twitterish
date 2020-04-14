@@ -1,7 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Tweet } from '../models/tweet.model';
 import { TweetService } from '../services/tweet.service';
-import { TweetModalComponent } from '../shared/tweet-modal/tweet-modal.component';
 
 @Component({
   selector: 'app-home',
