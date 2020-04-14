@@ -142,6 +142,9 @@ publish/
 *.pubxml
 *.publishproj
 
+# Publish backend output
+out/
+
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
@@ -182,7 +185,11 @@ ClientBin/
 *.publishsettings
 orleans.codegen.cs
 
-/node_modules
+# node modules
+node_modules/
+
+# frontend build
+dist/
 
 # RIA/Silverlight projects
 Generated_Code/
