@@ -20,12 +20,19 @@ namespace Twitterish
 
         public IConfiguration Configuration { get; }
 
+        readonly string AllowedOrigins = "_allowedOrigins";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
             services.AddDbContext<TwitterishContext>(opt =>
                opt.UseInMemoryDatabase("Twitterish"));
+
+            
+            services.AddCors(options => {
+                options.AddDefaultPolicy(builder => builder.WithOrigins(Configuration["AllowedHosts"]).AllowAnyHeader());
+            });
             
             // services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //     .AddEntityFrameworkStores<TwitterishContext>();
@@ -54,6 +61,7 @@ namespace Twitterish
             }
 
             app.UseRouting();
+            app.UseCors();
 
             // app.UseAuthentication();
             // app.UseIdentityServer();
