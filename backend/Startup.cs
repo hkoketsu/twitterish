@@ -27,14 +27,14 @@ namespace Twitterish
             services.AddDbContext<TwitterishContext>(opt =>
                opt.UseInMemoryDatabase("Twitterish"));
             
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<TwitterishContext>();
+            // services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //     .AddEntityFrameworkStores<TwitterishContext>();
 
-            services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, TwitterishContext>();
+            // services.AddIdentityServer()
+            //     .AddApiAuthorization<ApplicationUser, TwitterishContext>();
 
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
+            // services.AddAuthentication()
+            //     .AddIdentityServerJwt();
             
             services.AddControllersWithViews();
         }
@@ -55,9 +55,9 @@ namespace Twitterish
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseIdentityServer();
-            app.UseAuthorization();
+            // app.UseAuthentication();
+            // app.UseIdentityServer();
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
