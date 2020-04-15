@@ -15,10 +15,12 @@ export class TerminalComponent implements OnInit {
   backgroundColor: string;
   textColor: string;
   history: CommandItem[] = [];
+  input: HTMLElement;
 
   constructor(private tweetService: TweetService, private colorService: ColorService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.input = document.getElementById('cli-input');
     this.colorService.backgroundColor.subscribe(
       color => this.backgroundColor = color
     );
@@ -27,8 +29,8 @@ export class TerminalComponent implements OnInit {
     );
   }
 
-  onEnter(contenteditable: HTMLElement) {
-    const command = contenteditable.innerText
+  onEnter() {
+    const command = this.input.innerText
         .trim().replace(/\s\s+/g, ' ')
         .split('\n').join('')
         .split('\\>').join('');
@@ -36,8 +38,8 @@ export class TerminalComponent implements OnInit {
     console.log(command);
 
     if (command.slice(command.length - 1) === '\\') {
-      const linedText = contenteditable.innerText  += '\n>';
-      contenteditable.innerText = linedText.trim();
+      const linedText = this.input.innerText  += '\n>';
+      this.input.innerText = linedText.trim();
       return;
     }
     if (command === '' || command === ' ') {
@@ -45,12 +47,12 @@ export class TerminalComponent implements OnInit {
         command: '',
         result: null
       });
-      contenteditable.innerText = '';
+      this.input.innerText = '';
       return;
     }
     if (command === 'clear') {
       this.history = [];
-      contenteditable.innerText = '';
+      this.input.innerText = '';
       return;
     }
 
@@ -59,6 +61,10 @@ export class TerminalComponent implements OnInit {
       result: command
     };
     this.history.push(newItem);
-    contenteditable.innerText = '';
+    this.input.innerText = '';
+  }
+
+  focusOnInput() {
+    this.input.focus();
   }
 }
