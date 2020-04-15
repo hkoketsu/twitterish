@@ -19,13 +19,6 @@ namespace ContosoUniversity.Data
 
             var tweets = new Tweet[]
             {
-                new Tweet{Body="1"},
-                new Tweet{Body="2"},
-                new Tweet{Body="3"},
-                new Tweet{Body="Hi"},
-                new Tweet{Body="Hello"},
-                new Tweet{Body="What's up"}
-                
             };
             foreach (Tweet s in tweets)
             {
