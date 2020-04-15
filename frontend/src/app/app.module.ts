@@ -47,7 +47,7 @@ import { CliSettingsComponent } from './home/cli-settings/cli-settings.component
   ],
   providers: [
     TweetService,
-    ColorService
+    ColorService,
   ],
   bootstrap: [AppComponent]
 })

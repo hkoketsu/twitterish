@@ -10,7 +10,10 @@
   </div>
   <div class="flex-row w-100 pb-2" [style.color]="textColor">
     <div class="flex-grow-1">
-      <label for="" style="width: max-content;" class="mr-2">your-twitter-account:~$</label>
+      <label style="width: max-content;" class="mr-2">your-twitter-account:~$</label>
+    </div>
+    <div *ngIf="additionalLabel" class="pr-1">
+      <label style="width: max-content;" class="mr-1">{{ additionalLabel }}:</label>
     </div>
     <div #cliInput id="cli-input" contenteditable="true"
       (keydown.enter)="onEnter()"></div>

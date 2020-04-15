@@ -1,8 +1,11 @@
-import { CommandService } from './command.interface';
-import { ElementRef } from '@angular/core';
+import { Command } from './command.interface';
+import { ElementRef, Injectable } from '@angular/core';
 import { CommandItem } from 'src/app/models/command-item.model';
 
-export class Hi implements CommandService {
+@Injectable({
+  providedIn: 'root'
+})
+export class HiCommand implements Command {
 
   constructor() {  }
 

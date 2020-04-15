@@ -1,12 +1,12 @@
-import { CommandService } from './commands/command.interface';
+import { CommandIndex } from './commands/index';
 import { ColorService } from '../../services/color.service';
 import { TweetService } from '../../services/tweet.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TerminalService } from 'src/app/services/terminal.service';
 import { trigger, style, state, transition, animate } from '@angular/animations';
 import { ApiCommand } from 'src/app/models/api-command.model';
-import { commandList } from './commands';
 import { CommandItem } from 'src/app/models/command-item.model';
+import { Command } from './commands/command.interface';
 
 
 @Component({
@@ -25,6 +25,7 @@ import { CommandItem } from 'src/app/models/command-item.model';
 export class TerminalComponent implements OnInit {
   backgroundColor: string;
   textColor: string;
+  additionalLabel: string;
 
   history: CommandItem[] = [];
   @ViewChild('cliInput') input: ElementRef;
@@ -34,7 +35,8 @@ export class TerminalComponent implements OnInit {
   constructor(
     private tweetService: TweetService,
     private colorService: ColorService,
-    private terminalService: TerminalService) { }
+    private terminalService: TerminalService,
+    private commandIndex: CommandIndex) { }
 
   ngOnInit() {
     this.subscribeTerminalColor();
@@ -42,25 +44,36 @@ export class TerminalComponent implements OnInit {
   }
 
   onEnter() {
-    let command = this.input.nativeElement.innerText // format the input
-        .trim().replace(/\s\s+/g, ' ') // remove multiple whitespaces
-        .split('\n').join('') // remove break lines
-        .split('\\>').join('');
+    const inputContext = this.input.nativeElement.innerText // format the input
+      .trim().replace(/\s\s+/g, ' ') // remove multiple whitespaces
+      .split('\n').join('') // remove break lines
+      .split('\\>').join('');
 
-    if (command.slice(command.length - 1) === '\\') { // create new line
+    let command: string, additionalInfo: string;
+
+    if (this.additionalLabel) {
+      command = this.history[this.history.length - 1].command;
+      additionalInfo = inputContext;
+    } else {
+      command = inputContext;
+    }
+
+    if (inputContext.slice(inputContext.length - 1) === '\\') { // create new line
       command = 'line-break';
-    } else if (command === '' || command === ' ') {
+    } else if (inputContext === '' || inputContext === ' ') {
       command = 'empty';
     }
     this.terminalService.getCommandResponse(command).subscribe(
-      (res: ApiCommand) => {
+      async (res: ApiCommand) => {
         const serviceClassName = res.responseClass;
-        const commandService: CommandService = commandList[serviceClassName];
-        this.history = commandService.run(command, this.input, this.history);
+        const commandScript: Command = this.commandIndex.commands[serviceClassName];
+        this.history = await commandScript.run(command, this.input, this.history, this.additionalLabel, additionalInfo);
+        console.log(this.history.length);
+        this.additionalLabel = this.history[this.history.length - 1].additionalLabel;
       },
-      error => {
-        const commandService: CommandService = commandList['Invalid'];
-        this.history = commandService.run(command, this.input, this.history);
+      async error => {
+        const commandScript: Command = this.commandIndex.commands['Invalid'];
+        this.history = await commandScript.run(command, this.input, this.history);
       }
     );
   }

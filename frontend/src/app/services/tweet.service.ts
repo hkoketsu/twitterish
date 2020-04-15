@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tweet } from '../models/tweet.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +26,10 @@ export class TweetService {
     return this.http.get(this.apiUrl + id);
   }
 
-  createTweet(text: string) {
+  createTweet(text: string): Observable<Tweet> {
     const newTweet = new Tweet();
     newTweet.body = text;
-    return this.http.post(this.apiUrl, newTweet);
+    return this.http.post<Tweet>(this.apiUrl, newTweet);
   }
 
   isTimelineLatest(isLatest: boolean) {

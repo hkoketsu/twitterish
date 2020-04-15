@@ -39,6 +39,7 @@ namespace ContosoUniversity.Data
                 new Command{KeyCommand="clear", ResponseClass="Clear"},
                 new Command{KeyCommand="empty", ResponseClass="Empty"},
                 new Command{KeyCommand="line-break", ResponseClass="LineBreak"},
+                new Command{KeyCommand="tweet", ResponseClass="NewTweet"},
             };
             foreach (Command c in commands)
             {
