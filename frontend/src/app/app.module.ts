@@ -18,7 +18,6 @@ import { TweetService } from './services/tweet.service';
 import { TerminalComponent } from './shared/terminal/terminal.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CliSettingsComponent } from './home/cli-settings/cli-settings.component';
-import { ContenteditableModule } from '@ng-stack/contenteditable';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,6 @@ import { ContenteditableModule } from '@ng-stack/contenteditable';
     ReactiveFormsModule,
     NgbModule,
     ColorPickerModule,
-    ContenteditableModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
     ])
