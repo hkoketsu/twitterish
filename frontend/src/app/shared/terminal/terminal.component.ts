@@ -2,6 +2,7 @@ import { ColorService } from '../../services/color.service';
 import { TweetService } from '../../services/tweet.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TerminalService } from 'src/app/services/terminal.service';
+import { trigger, style, state, transition, animate } from '@angular/animations';
 
 export interface CommandItem {
   command: string;
@@ -10,7 +11,15 @@ export interface CommandItem {
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
-  styleUrls: ['./terminal.component.css']
+  styleUrls: ['./terminal.component.css'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({opacity: 1})),
+      state('closed', style({opacity: 0})),
+      transition('open => closed', [animate('0.1s')]),
+      transition('closed => open', [animate('0.3s')]),
+    ]),
+  ]
 })
 export class TerminalComponent implements OnInit {
   backgroundColor: string;
@@ -27,20 +36,8 @@ export class TerminalComponent implements OnInit {
     private terminalService: TerminalService) { }
 
   ngOnInit() {
-    this.colorService.backgroundColor.subscribe(
-      value => this.backgroundColor = value
-    );
-    this.colorService.textColor.subscribe(
-      value => this.textColor = value
-    );
-    this.terminalService.terminalOn.subscribe(value => {
-      this.terminalOn = value;
-      if (this.terminalOn) {
-        setTimeout(() => {
-          this.focusOnInput();
-        }, 100);
-      }
-    });
+    this.subscribeTerminalColor();
+    this.subscribeTerminalSwitch();
   }
 
   onEnter() {
@@ -80,5 +77,23 @@ export class TerminalComponent implements OnInit {
 
   focusOnInput() {
     this.input.nativeElement.focus();
+  }
+
+  private subscribeTerminalColor() {
+    this.colorService.backgroundColor.subscribe(
+      value => this.backgroundColor = value
+    );
+    this.colorService.textColor.subscribe(
+      value => this.textColor = value
+    );
+  }
+
+  private subscribeTerminalSwitch() {
+    this.terminalService.terminalOn.subscribe(value => {
+      this.terminalOn = value;
+      if (this.terminalOn) {
+        setTimeout(() => this.focusOnInput(), 200);
+      }
+    });
   }
 }
