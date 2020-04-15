@@ -1,0 +1,17 @@
+<div class="cli-container" [style.background]="backgroundColor">
+  <div class="flex-column w-100" *ngFor="let item of history; let i=index">
+    <div class="line" [style.color]="textColor">
+      <label for="" style="width: max-content;" class="mr-2">your-twitter-account:~$</label>{{ item.command }}
+    </div>
+    <div class="line" [style.color]="textColor" *ngIf="item.result" >
+        {{ item.result }}
+    </div>
+  </div>
+  <div class="flex-row w-100 pb-2" [style.color]="textColor">
+    <div class="flex-grow-1">
+      <label for="" style="width: max-content;" class="mr-2">your-twitter-account:~$</label>
+    </div>
+    <div id="cli-input" contenteditable="true"
+      (keydown.enter)="onEnter($event.target)"></div>
+  </div>
+</div>

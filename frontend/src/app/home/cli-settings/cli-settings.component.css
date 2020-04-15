@@ -1,0 +1,10 @@
+.grey-pane {
+  flex-direction: column;
+  padding: 10px;
+  background-color: rgb(230, 236, 240);
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+
+
+
