@@ -15,7 +15,7 @@ export class TweetService {
   constructor(
     private http: HttpClient,
     @Inject('BASE_URL') baseUrl: string) {
-    this.apiUrl = baseUrl + 'api/tweet';
+    this.apiUrl = baseUrl + 'tweet/';
   }
 
   getTweets() {

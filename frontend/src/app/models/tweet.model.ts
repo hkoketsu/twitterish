@@ -1,10 +1,6 @@
 import { Deserializable } from './deserializable.model';
 
-export class Tweet implements Deserializable {
+export class Tweet extends Deserializable {
   id: number;
   body: string;
-
-  deserialize(input: any): this {
-    return Object.assign(this, input);
-  }
 }

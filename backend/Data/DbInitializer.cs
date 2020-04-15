@@ -32,6 +32,17 @@ namespace ContosoUniversity.Data
                 context.Tweets.Add(s);
             }
             context.SaveChanges();
+
+            var commands = new Command[]
+            {
+                new Command{KeyCommand="hi", ResponseClass="Hi"},
+            };
+            foreach (Command c in commands)
+            {
+                context.Commands.Add(c);
+            }
+            context.SaveChanges();
+
         }
     }
 }

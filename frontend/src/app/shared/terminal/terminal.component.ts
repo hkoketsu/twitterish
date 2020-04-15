@@ -1,8 +1,11 @@
+import { CommandService } from './commands/command.interface';
 import { ColorService } from '../../services/color.service';
 import { TweetService } from '../../services/tweet.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TerminalService } from 'src/app/services/terminal.service';
 import { trigger, style, state, transition, animate } from '@angular/animations';
+import { Command } from 'src/app/models/command.model';
+import { commandList } from './commands';
 
 export interface CommandItem {
   command: string;
@@ -46,8 +49,6 @@ export class TerminalComponent implements OnInit {
         .split('\n').join('')
         .split('\\>').join('');
 
-    console.log(command);
-
     if (command.slice(command.length - 1) === '\\') {
       const linedText = this.input.nativeElement.innerText  += '\n>';
       this.input.nativeElement.innerText = linedText.trim();
@@ -67,11 +68,18 @@ export class TerminalComponent implements OnInit {
       return;
     }
 
-    const newItem: CommandItem = {
-      command: command,
-      result: command
-    };
-    this.history.push(newItem);
+    this.terminalService.getCommandResponse(command).subscribe(
+      (res: Command) => {
+        const serviceClassName = res.responseClass;
+        const commandService: CommandService = commandList[serviceClassName];
+        const newItem: CommandItem = {
+          command: command,
+          result: commandService.run()
+        };
+        this.history.push(newItem);
+      },
+      error => console.log(error)
+    );
     this.input.nativeElement.innerText = '';
   }
 
