@@ -64,6 +64,10 @@ app-home {
   border-radius: 20px;
 }
 
+.fade {
+  transition: none;
+}
+
 .color-picker,
 color-picker .right,
 color-picker .cursor {

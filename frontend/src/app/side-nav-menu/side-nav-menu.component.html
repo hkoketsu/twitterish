@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="side-menu-row justify-content-center mt-3">
-                        <a class="btn btn-tweet" (click)="openModal()">
+                        <a class="btn btn-eclipse btn-tweet" (click)="openModal()">
                             <div>
                                 <span>Tweet</span>
                             </div>
@@ -145,9 +145,10 @@
                     </div>
 
                     <div class="side-menu-row justify-content-center mt-3">
-                      <a class="btn btn-tweet btn-cli" (click)="openTerminal()">
+                      <a class="btn btn-eclipse btn-cli" (click)="openTerminal()">
                           <div>
-                              <span>CLI</span>
+                              <span *ngIf="terminalOn" >CLI On</span>
+                              <span *ngIf="!terminalOn" >CLI Off</span>
                           </div>
                       </a>
                   </div>

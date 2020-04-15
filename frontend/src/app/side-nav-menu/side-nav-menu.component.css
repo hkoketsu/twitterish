@@ -92,7 +92,7 @@ header {
 }
 
 
-.btn-tweet {
+.btn-eclipse {
   min-width: 200px;
   max-width: 100%;
   height: 50px;
@@ -100,7 +100,32 @@ header {
   border-radius: 30px;
 }
 
+
 .btn-cli {
-  background-color: grey;
-  border: 1px solid grey;
+  color: #fff;
+  display: flex;
+  background-color: #44546A;
+  border: 1px solid #44546A;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-cli > div {
+  font-weight: bold;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.btn-cli:hover,
+.btn-cli:focus,
+.btn-cli:active {
+  background-color: #28323F;
+  border: 1px solid #28323F;
+}
+
+.btn-cli:active {
+  background-color: #14191F;
+  border: 1px solid #14191F;
 }

@@ -1,6 +1,7 @@
 import { ColorService } from '../../services/color.service';
 import { TweetService } from '../../services/tweet.service';
 import { Component, OnInit } from '@angular/core';
+import { TerminalService } from 'src/app/services/terminal.service';
 
 export interface CommandItem {
   command: string;
@@ -14,18 +15,27 @@ export interface CommandItem {
 export class TerminalComponent implements OnInit {
   backgroundColor: string;
   textColor: string;
+
   history: CommandItem[] = [];
   input: HTMLElement;
 
-  constructor(private tweetService: TweetService, private colorService: ColorService) { }
+  terminalOn: boolean;
+
+  constructor(
+    private tweetService: TweetService,
+    private colorService: ColorService,
+    private terminalService: TerminalService) { }
 
   ngOnInit() {
     this.input = document.getElementById('cli-input');
     this.colorService.backgroundColor.subscribe(
-      color => this.backgroundColor = color
+      value => this.backgroundColor = value
     );
     this.colorService.textColor.subscribe(
-      color => this.textColor = color
+      value => this.textColor = value
+    );
+    this.terminalService.terminalOn.subscribe(
+      value => this.terminalOn = value
     );
   }
 

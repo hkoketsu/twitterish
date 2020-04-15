@@ -1,4 +1,4 @@
-<div class="cli-container" [style.background]="backgroundColor" (click)="focusOnInput()">
+<div *ngIf="terminalOn"  class="cli-container" [style.background]="backgroundColor" (click)="focusOnInput()">
   <div class="flex-column w-100" *ngFor="let item of history; let i=index">
     <div class="line" [style.color]="textColor">
       <label for="" style="width: max-content;" class="mr-2">your-twitter-account:~$</label>{{ item.command }}
