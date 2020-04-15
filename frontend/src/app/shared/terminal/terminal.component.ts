@@ -48,11 +48,8 @@ export class TerminalComponent implements OnInit {
         .split('\\>').join('');
 
     if (command.slice(command.length - 1) === '\\') { // create new line
-      const linedText = this.input.nativeElement.innerText  += '\n>';
-      this.input.nativeElement.innerText = linedText.trim();
-      return;
-    }
-    if (command === '' || command === ' ') {
+      command = 'line-break';
+    } else if (command === '' || command === ' ') {
       command = 'empty';
     }
     this.terminalService.getCommandResponse(command).subscribe(
@@ -61,9 +58,11 @@ export class TerminalComponent implements OnInit {
         const commandService: CommandService = commandList[serviceClassName];
         this.history = commandService.run(command, this.input, this.history);
       },
-      error => console.log(error)
+      error => {
+        const commandService: CommandService = commandList['Invalid'];
+        this.history = commandService.run(command, this.input, this.history);
+      }
     );
-    this.input.nativeElement.innerText = '';
   }
 
   focusOnInput() {
