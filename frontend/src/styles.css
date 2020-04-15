@@ -64,4 +64,10 @@ app-home {
   border-radius: 20px;
 }
 
+.color-picker,
+color-picker .right,
+color-picker .cursor {
+  display: block;
+}
+
 

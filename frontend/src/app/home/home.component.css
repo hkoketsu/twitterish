@@ -70,13 +70,6 @@ app-tweet, app-tweet-input, app-search-bar {
     flex-grow: 1;
 }
 
-.grey-pane {
-    padding: 10px;
-    background-color: rgb(230, 236, 240);
-    border: 1px solid transparent;
-    border-radius: 10px;
-}
-
 .border {
     border: 1px solid lightgrey;
 }

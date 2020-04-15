@@ -1,4 +1,11 @@
-<div class="container-fluid h-100">
-  <app-side-nav-menu class="flex-grow-1"></app-side-nav-menu>
-  <router-outlet class="app-component"></router-outlet>
+<div class="w-100 h-100">
+  <div class="flex-column w-100">
+    <div>
+      <app-side-nav-menu class="flex-grow-1"></app-side-nav-menu>
+      <router-outlet class="app-component"></router-outlet>
+    </div>
+    <div>
+      <app-terminal></app-terminal>
+    </div>
+  </div>
 </div>

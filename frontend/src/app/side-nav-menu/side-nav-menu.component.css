@@ -99,3 +99,8 @@ header {
   padding: 0 30px;
   border-radius: 30px;
 }
+
+.btn-cli {
+  background-color: grey;
+  border: 1px solid grey;
+}

@@ -14,5 +14,9 @@ export class SideNavMenuComponent {
     const modalRef = this.modalService.open(TweetModalComponent);
     modalRef.componentInstance.name = 'World';
   }
+
+  openTerminal() {
+    console.log('open terminal');
+  }
 }
 
