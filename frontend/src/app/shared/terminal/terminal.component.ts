@@ -78,6 +78,12 @@ export class TerminalComponent implements OnInit {
     );
   }
 
+  async onAbort() {
+    const commandScript: Command = this.commandIndex.commands['Empty'];
+    this.history = await commandScript.run('', this.input, this.history);
+    this.additionalLabel = null;
+  }
+
   focusOnInput() {
     this.input.nativeElement.focus();
   }

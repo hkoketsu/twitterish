@@ -16,6 +16,6 @@
       <label style="width: max-content;" class="mr-1">{{ additionalLabel }}:</label>
     </div>
     <div #cliInput id="cli-input" contenteditable="true"
-      (keydown.enter)="onEnter()"></div>
+      (keydown.enter)="onEnter()" (keydown.control.c)="onAbort()" ></div>
   </div>
 </div>
