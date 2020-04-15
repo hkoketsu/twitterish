@@ -1,4 +1,4 @@
-<div *ngIf="terminalOn"  class="cli-container" [style.background]="backgroundColor" (click)="focusOnInput()">
+<div [hidden]="!terminalOn" class="cli-container" [style.background]="backgroundColor" (click)="focusOnInput()">
   <div class="flex-column w-100" *ngFor="let item of history; let i=index">
     <div class="line" [style.color]="textColor">
       <label for="" style="width: max-content;" class="mr-2">your-twitter-account:~$</label>{{ item.command }}
@@ -11,7 +11,7 @@
     <div class="flex-grow-1">
       <label for="" style="width: max-content;" class="mr-2">your-twitter-account:~$</label>
     </div>
-    <div id="cli-input" contenteditable="true"
+    <div #cliInput id="cli-input" contenteditable="true"
       (keydown.enter)="onEnter()"></div>
   </div>
 </div>

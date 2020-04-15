@@ -1,6 +1,6 @@
 import { ColorService } from '../../services/color.service';
 import { TweetService } from '../../services/tweet.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TerminalService } from 'src/app/services/terminal.service';
 
 export interface CommandItem {
@@ -17,7 +17,7 @@ export class TerminalComponent implements OnInit {
   textColor: string;
 
   history: CommandItem[] = [];
-  input: HTMLElement;
+  @ViewChild('cliInput') input: ElementRef;
 
   terminalOn: boolean;
 
@@ -27,20 +27,24 @@ export class TerminalComponent implements OnInit {
     private terminalService: TerminalService) { }
 
   ngOnInit() {
-    this.input = document.getElementById('cli-input');
     this.colorService.backgroundColor.subscribe(
       value => this.backgroundColor = value
     );
     this.colorService.textColor.subscribe(
       value => this.textColor = value
     );
-    this.terminalService.terminalOn.subscribe(
-      value => this.terminalOn = value
-    );
+    this.terminalService.terminalOn.subscribe(value => {
+      this.terminalOn = value;
+      if (this.terminalOn) {
+        setTimeout(() => {
+          this.focusOnInput();
+        }, 100);
+      }
+    });
   }
 
   onEnter() {
-    const command = this.input.innerText
+    const command = this.input.nativeElement.innerText
         .trim().replace(/\s\s+/g, ' ')
         .split('\n').join('')
         .split('\\>').join('');
@@ -48,8 +52,8 @@ export class TerminalComponent implements OnInit {
     console.log(command);
 
     if (command.slice(command.length - 1) === '\\') {
-      const linedText = this.input.innerText  += '\n>';
-      this.input.innerText = linedText.trim();
+      const linedText = this.input.nativeElement.innerText  += '\n>';
+      this.input.nativeElement.innerText = linedText.trim();
       return;
     }
     if (command === '' || command === ' ') {
@@ -57,12 +61,12 @@ export class TerminalComponent implements OnInit {
         command: '',
         result: null
       });
-      this.input.innerText = '';
+      this.input.nativeElement.innerText = '';
       return;
     }
     if (command === 'clear') {
       this.history = [];
-      this.input.innerText = '';
+      this.input.nativeElement.innerText = '';
       return;
     }
 
@@ -71,10 +75,10 @@ export class TerminalComponent implements OnInit {
       result: command
     };
     this.history.push(newItem);
-    this.input.innerText = '';
+    this.input.nativeElement.innerText = '';
   }
 
   focusOnInput() {
-    this.input.focus();
+    this.input.nativeElement.focus();
   }
 }
