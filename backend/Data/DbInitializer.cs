@@ -36,6 +36,8 @@ namespace ContosoUniversity.Data
             var commands = new Command[]
             {
                 new Command{KeyCommand="hi", ResponseClass="Hi"},
+                new Command{KeyCommand="clear", ResponseClass="Clear"},
+                new Command{KeyCommand="empty", ResponseClass="Empty"},
             };
             foreach (Command c in commands)
             {

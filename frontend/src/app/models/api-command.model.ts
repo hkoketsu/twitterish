@@ -1,6 +1,6 @@
 import { Deserializable } from './deserializable.model';
 
-export class Command extends Deserializable {
+export class ApiCommand extends Deserializable {
   keyCommand: string;
   responseClass: string;
 }

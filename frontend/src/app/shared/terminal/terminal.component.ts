@@ -4,13 +4,11 @@ import { TweetService } from '../../services/tweet.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TerminalService } from 'src/app/services/terminal.service';
 import { trigger, style, state, transition, animate } from '@angular/animations';
-import { Command } from 'src/app/models/command.model';
+import { ApiCommand } from 'src/app/models/api-command.model';
 import { commandList } from './commands';
+import { CommandItem } from 'src/app/models/command-item.model';
 
-export interface CommandItem {
-  command: string;
-  result: string;
-}
+
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
@@ -44,39 +42,24 @@ export class TerminalComponent implements OnInit {
   }
 
   onEnter() {
-    const command = this.input.nativeElement.innerText
-        .trim().replace(/\s\s+/g, ' ')
-        .split('\n').join('')
+    let command = this.input.nativeElement.innerText // format the input
+        .trim().replace(/\s\s+/g, ' ') // remove multiple whitespaces
+        .split('\n').join('') // remove break lines
         .split('\\>').join('');
 
-    if (command.slice(command.length - 1) === '\\') {
+    if (command.slice(command.length - 1) === '\\') { // create new line
       const linedText = this.input.nativeElement.innerText  += '\n>';
       this.input.nativeElement.innerText = linedText.trim();
       return;
     }
     if (command === '' || command === ' ') {
-      this.history.push({
-        command: '',
-        result: null
-      });
-      this.input.nativeElement.innerText = '';
-      return;
+      command = 'empty';
     }
-    if (command === 'clear') {
-      this.history = [];
-      this.input.nativeElement.innerText = '';
-      return;
-    }
-
     this.terminalService.getCommandResponse(command).subscribe(
-      (res: Command) => {
+      (res: ApiCommand) => {
         const serviceClassName = res.responseClass;
         const commandService: CommandService = commandList[serviceClassName];
-        const newItem: CommandItem = {
-          command: command,
-          result: commandService.run()
-        };
-        this.history.push(newItem);
+        this.history = commandService.run(command, this.input, this.history);
       },
       error => console.log(error)
     );
