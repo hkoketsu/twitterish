@@ -1,4 +1,4 @@
-<div class="cli-container" [@openClose]="terminalOn ? 'open' : 'closed'"
+<div class="cli-container" [@openClose]="terminalOn ? 'open' : 'closed'" [hidden]="!terminalOn"
       [style.background]="backgroundColor" (click)="focusOnInput()">
   <div class="flex-column w-100" *ngFor="let item of history; let i=index">
     <div class="line" [style.color]="textColor">
