@@ -19,6 +19,7 @@ import { TweetService } from './services/tweet.service';
 import { TerminalComponent } from './shared/terminal/terminal.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CliSettingsComponent } from './home/cli-settings/cli-settings.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CliSettingsComponent } from './home/cli-settings/cli-settings.component
     TweetModalComponent,
     TerminalComponent,
     CliSettingsComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,7 +44,8 @@ import { CliSettingsComponent } from './home/cli-settings/cli-settings.component
     NgbModule,
     ColorPickerModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: LandingComponent, pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
     ])
   ],
   providers: [
