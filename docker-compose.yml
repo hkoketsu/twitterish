@@ -1,0 +1,10 @@
+version: "3.7"
+services: 
+    web:
+        build: ./frontend
+        ports: 
+            - "80:80"
+            - "49153:49153"
+        volumes: 
+            - "/frontend/node_modules"
+            - ".:/frontend"
